@@ -62,12 +62,7 @@ const Hero = () => {
           />
         </motion.div>
       </div>
-      <Wavify
-            className="absolute top-0 left-0 w-full rotate-180"
-            fill="#316FD3"
-            paused={false}
-            options={{ height: 40, amplitude: 40, speed: 0.15, points: 3 }}
-            />
+      
       <Wavify
             className="absolute top-0 left-0 w-full rotate-180"
             fill="#3B82F6"
