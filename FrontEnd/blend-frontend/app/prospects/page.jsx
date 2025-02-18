@@ -1,42 +1,19 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react";
-import { createSwapy } from "swapy";
-import { initialNodes } from "@/data/coursesOnly";
-
 const Prospect = () => {
-  const swapy = useRef(null);
-  const container = useRef(null);
-  const [courses, setCourses] = useState(initialNodes)
-
-  useEffect(() => {
-    if (container.current) {
-      swapy.current = createSwapy(container.current);
-      swapy.current.onSwap((event) => {
-        console.log("swap", event);
-      });
-    }
-    return () => {
-      swapy.current?.destroy();
-    };
-  }, []);
 
   return (
-    <div ref={container} className="flex gap-4 p-4">
-      <div data-swapy-slot="availableCourses" className="w-1/2 bg-gray-100 p-4 min-h-[300px] border">
-        {courses.map((course) => {
-            return (
-            <div key={course.id} data-swapy-item={course.id} className="p-2 bg-white shadow-md rounded-md cursor-pointer">
-                <div>{course.data.label}</div>
-            </div>
-            )
-        })}
-      </div>
-
-      <div data-swapy-slot="selectedCourses" className="w-1/2 bg-blue-100 p-4 min-h-[300px] border">
-        <div data-swapy-item="b"><div></div></div>
-        <div data-swapy-item="c"><div></div></div>
-      </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-6">
+      <h1 className="text-4xl font-bold text-gray-800 mb-4">🚧 Under Construction 🚧</h1>
+      <p className="text-lg text-gray-600 mb-6 max-w-md">
+        Our team is currently working on this feature. Please check back soon for updates!
+      </p>
+      <a 
+        href="/"
+        className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all"
+      >
+        Go back to Home
+      </a>
     </div>
   );
 };

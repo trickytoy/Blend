@@ -176,61 +176,63 @@ const Flow = () => {
       fitView={{ nodes: nodes[0]}}
       
     >
-      <Panel
-        position="top-left"
+    <Panel
+      position="top-left"
+      style={{
+        marginTop: '20px',
+        border: '1px solid #ccc',
+        padding: '20px',
+        borderRadius: '12px',
+        backgroundColor: 'white',
+        width: '300px',
+        boxShadow: isPanelHovered ? '0 6px 12px rgba(0, 0, 0, 0.2)' : '0 4px 8px rgba(0, 0, 0, 0.1)',
+        transition: 'all 0.3s ease-in-out',
+        zIndex: 1000,
+        fontFamily: '"Inter", sans-serif', // Modern font
+      }}
+      onMouseEnter={() => setIsPanelHovered(true)}
+      onMouseLeave={() => setIsPanelHovered(false)}
+    >
+      <button
+        onClick={handleClosePanel}
         style={{
-          marginTop: '100px',
-          border: '1px solid #ccc',
-          padding: '20px',
-          borderRadius: '12px',
-          backgroundColor: 'white',
-          width: '300px',
-          boxShadow: isPanelHovered ? '0 6px 12px rgba(0, 0, 0, 0.2)' : '0 4px 8px rgba(0, 0, 0, 0.1)', // Dynamic shadow based on hover
-          transition: 'all 0.3s ease-in-out',
-          zIndex: 1000, // Ensure the panel stays on top of nodes and edges
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          background: 'none',
+          border: 'none',
+          fontSize: '18px',
+          cursor: 'pointer',
+          color: '#888',
+          transition: 'color 0.3s',
         }}
-        onMouseEnter={() => setIsPanelHovered(true)} // Set hover state to true on mouse enter
-        onMouseLeave={() => setIsPanelHovered(false)} // Set hover state to false on mouse leave
+        onMouseEnter={(e) => (e.target.style.color = '#000')}
+        onMouseLeave={(e) => (e.target.style.color = '#888')}
       >
-        <button
-          onClick={handleClosePanel}
-          style={{
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            background: 'none',
-            border: 'none',
-            fontSize: '18px',
-            cursor: 'pointer',
-            color: '#888',
-            transition: 'color 0.3s',
-          }}
-          onMouseEnter={(e) => (e.target.style.color = '#000')} // Change color on hover
-          onMouseLeave={(e) => (e.target.style.color = '#888')} // Reset color when hover leaves
-        >
-          &times;
-        </button>
+        &times;
+      </button>
 
-        <div>
-          {hoveredNode ? (
-            <>
-              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '10px' }}>
-                {hoveredNode.data.label} - {hoveredNode.data.title}
-              </h3>
-              <p style={{ fontSize: '14px', color: '#555', marginBottom: '5px' }}>
-                {hoveredNode.data.Description}
-              </p>
-              <p style={{ fontSize: '14px', color: '#777' }}>
-                {hoveredNode.data.Condition}
-              </p>
-            </>
-          ) : (
-            <h3 style={{ fontSize: '16px', color: '#888', fontWeight: '400' }}>
-              Click on a course to see Course Detail...
+      <div>
+        {hoveredNode ? (
+          <>
+            <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '10px', color: '#333', letterSpacing: '0.5px' }}>
+              {hoveredNode.data.label} - {hoveredNode.data.title}
             </h3>
-          )}
-        </div>
-      </Panel>
+            <p style={{ fontSize: '15px', color: '#555', marginBottom: '8px', lineHeight: '1.5' }}>
+              {hoveredNode.data.Description}
+            </p>
+            <p style={{ fontSize: '14px', color: '#666', fontStyle: 'italic' }}>
+              {hoveredNode.data.Condition}
+            </p>
+          </>
+        ) : (
+          <h3 style={{ fontSize: '16px', color: '#888', fontWeight: '400', letterSpacing: '0.3px' }}>
+            Click on a course to see Course Detail...
+          </h3>
+        )}
+      </div>
+    </Panel>
+
       <Background />
       <Controls />
       <MiniMap />
