@@ -64,12 +64,18 @@ const Hero = () => {
       </div>
       
       <Wavify
-            className="absolute top-0 left-0 w-full rotate-180"
-            fill="#3B82F6"
-            paused={false}
-            options={{ height: 40, amplitude: 40, speed: 0.2, points: 3 }}
-            />
-        
+        className="absolute top-0 left-0 w-full rotate-180"
+        fill="#3B82F6"
+        paused={false}
+        options={{ height: 40, amplitude: 40, speed: 0.2, points: 3 }}
+      />
+      
+      <Wavify
+        className="absolute top-0 left-0 w-full rotate-180"
+        fill="#2563EB"
+        paused={false}
+        options={{ height: 35, amplitude: 35, speed: 0.3, points: 3 }}
+      />
     </section>
   )
 }
