@@ -1,0 +1,13 @@
+runtime: nodejs20
+
+service: default
+
+handlers: 
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
+
+env_variables:
+  PORT: 8080
+  GEMINI_API_KEY: "AIzaSyDHAEP0LpcRt6sDPNQV2F2Q4AWNHYU0vE8"

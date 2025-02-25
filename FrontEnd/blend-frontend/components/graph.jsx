@@ -11,7 +11,6 @@ import {
   MarkerType,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { initialNodes, initialEdges } from '@/data/coursesOnly'; // Importing nodes and edges
 
 const hierarchicalOrdering = (nodes, edges) => {
   let levels = {};
@@ -84,13 +83,8 @@ const hierarchicalOrdering = (nodes, edges) => {
   return { nodes: temp_nodes, edges };
 };
 
-const Flow = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState(
-    initialNodes.map((node) => ({
-      ...node,
-      type: "tooltip", // Assign custom node type
-    }))
-  );
+const Flow = ({ initialNodes, initialEdges }) => {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(
     initialEdges.map((edge) => ({
       ...edge,
@@ -102,6 +96,7 @@ const Flow = () => {
       },
     }))
   );
+  console.log(nodes, edges)
   const [highlightedEdges, setHighlightedEdges] = useState([]);
   const [hoveredNode, setHoveredNode] = useState(null); // New state for hovered node
   const [isPanelHovered, setIsPanelHovered] = useState(false);

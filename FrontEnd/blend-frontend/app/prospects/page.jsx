@@ -1,14 +1,16 @@
-import CoursesDND from '@/components/Coursesdnd'
+"use client"
+import CoursesDND from '@/components/prospects/Coursesdnd'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-
 import React from 'react'
 
 const Prospect = () => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <CoursesDND />
+      <div className="flex-grow">
+        <CoursesDND />
+      </div>
       <Footer />
     </div>
   )
